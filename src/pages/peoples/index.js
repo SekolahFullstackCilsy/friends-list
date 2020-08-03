@@ -4,17 +4,16 @@ import { getAllPeople } from '../../store/actions'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-const PeoplesPage = ({ peoples, getAllPeople }) => {
+const PeoplesPage = ({ users, getPeoples }) => {
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    getAllPeople()
+    getPeoples()
   }, [])
 
   return (
     <div>
       {
-        peoples.length ? peoples.map((people, key) => {
-          console.log(people)
+        users.length ? users.map((people, key) => {
           return <PeopleCard key={key} people={people} />
         }) : null
       }
@@ -24,13 +23,13 @@ const PeoplesPage = ({ peoples, getAllPeople }) => {
 
 const mapStateToProps = state => {
   return {
-    peoples: state.peopleReducer.peoples
+    users: state.peopleReducer.peoples
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllPeople: () => dispatch(getAllPeople())
+    getPeoples: () => dispatch(getAllPeople())
   }
 }
 
