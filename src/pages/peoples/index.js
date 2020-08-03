@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import PeopleCard from '../../components/people-card'
 import { getAllPeople } from '../../store/actions'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 const PeoplesPage = ({ peoples, getAllPeople }) => {
   /* eslint-disable react-hooks/exhaustive-deps */
@@ -33,4 +34,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PeoplesPage)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PeoplesPage))
